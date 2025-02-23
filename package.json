@@ -1,0 +1,18 @@
+{
+  "name": "node-ecommerce-api",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "dotenvx run -f .env.local -f .env -- node ."
+  },
+  "keywords": [],
+  "author": "Polyakov Alexey",
+  "license": "ISC",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.37.0",
+    "express": "^4.21.2",
+    "pg": "^8.13.3"
+  }
+}
