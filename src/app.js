@@ -1,20 +1,15 @@
 import express from "express";
-import { pool } from "./configs/db.js";
 import { errorLogger } from "./middlewares/error-logger.js";
+import { userRouter } from "./routes/user-route.js";
+import { authRouter } from "./routes/auth-route.js";
 
 const app = express();
 const appPort = process.env.API_PORT || 3000;
 
 app.use(express.json());
+app.use("/api/v1", userRouter);
+app.use("/api/v1", authRouter);
 app.use(errorLogger);
-
-pool.query("SELECT NOW()", (error, result) => {
-  if (error) {
-    console.error("Error connecting to the database", error.stack);
-  } else {
-    console.log("Connected to the database:", result.rows);
-  }
-});
 
 app.listen(appPort, (error) => {
   if (error) {
